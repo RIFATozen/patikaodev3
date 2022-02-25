@@ -81,3 +81,43 @@ const menu = [
     desc: `Red bean paste dessert, serving with honey.`,
   },
 ];
+
+const item_CLASSES = ["menu-items", "col-lg-6", "col-sm-12"];
+const divDOM = document.querySelector(".row");
+menu.map((item) => {
+  const divItem = document.createElement("div");
+  const divTitle = document.createElement("h4");
+  const divPrice = document.createElement("h4");
+  const divImg = document.createElement("Img");
+  const divDesc = document.createElement("div");
+  const divInfo = document.createElement("div");
+  const divMenuTitle = document.createElement("div");
+
+  divTitle.textContent = item.title;
+  divPrice.textContent = item.price;
+
+  divImg.src = item.img;
+  divImg.alt = item.title;
+  divImg.classList.add("photo");
+
+  divDesc.textContent = item.desc;
+  divDesc.classList.add("menu-text");
+
+  divInfo.classList.add("menu-info");
+  divMenuTitle.classList.add("menu-title");
+
+  divMenuTitle.appendChild(divTitle);
+  divMenuTitle.appendChild(divPrice);
+
+  divInfo.appendChild(divMenuTitle);
+  divInfo.appendChild(divDesc);
+
+  item_CLASSES.forEach((itm) => {
+    divItem.classList.add(itm);
+  });
+  divItem.id = item.id;
+  divItem.appendChild(divImg);
+  divItem.appendChild(divInfo);
+
+  divDOM.appendChild(divItem);
+});
